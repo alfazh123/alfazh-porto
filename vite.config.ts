@@ -3,7 +3,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-export default defineConfig(({ mode }) => ({
-	plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
-	base: mode === "production" ? "/alfazh-porto/" : "/",
-}));
+export default defineConfig({
+  plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+});
