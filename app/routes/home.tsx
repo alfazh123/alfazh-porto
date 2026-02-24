@@ -19,12 +19,14 @@ export default function Home() {
 			description:
 				"Image editor web app, built with React and Tailwind CSS. implementation of `rust-editor` package",
 			link: "https://github.com/alfazh123/image-editor",
+			year: 2025,
 		},
 		{
 			name: "PathXplorer",
 			description:
 				"Mobile app for exploring interest and talent of high school students, built with Kotlin.",
 			link: "https://github.com/PathXplorer-C242-PS289",
+			year: 2024,
 		},
 	];
 
@@ -65,60 +67,58 @@ export default function Home() {
 				</div>
 			</div>
 
-			<div className="md:max-w-4xl mx-auto p-8 flex flex-col rounded-lg h-[50vh] justify-center">
-				<div className="rounded-lg w-full justify-center text-center mb-8">
+			<div className="md:max-w-4xl mx-auto p-8 grid md:grid-cols-2 grid-cols-1 rounded-lg justify-center">
+				<div className="rounded-lg w-full justify-center mb-8 h-80">
 					<h2 className="text-6xl font-bold mb-4">Selected Project</h2>
 				</div>
-				<div className="flex flex-col h-fit">
-					{projects.map((project, index) => (
-						<a
-							key={index}
-							href={project.link}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="border-b border-gray-300 p-4 rounded-lg flex justify-between items-center">
-							<div>
-								<h3 className="text-2xl font-semibold">{project.name}</h3>
-								<p className="text-gray-600">{project.description}</p>
-							</div>
-							<div>
-								<ArrowUpRight className="w-8 h-8" />
-							</div>
-						</a>
-					))}
-				</div>
+				{projects.map((project, index) => (
+					<a
+						key={index}
+						href={project.link}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="border-b-2 border-gray-300 p-4 flex flex-col justify-between h-80 hover:bg-slate-100 hover:scale-110 transition-transform duration-300 rounded-t-lg">
+						<div>
+							<h3 className="text-2xl font-semibold">{project.name}</h3>
+							<p className="text-gray-600">{project.description}</p>
+						</div>
+						<div className="w-full flex justify-end">
+							<p className="text-6xl">{project.year}</p>
+							<ArrowUpRight className="w-12 h-12" />
+						</div>
+					</a>
+				))}
 			</div>
 
-			<div className="md:max-w-4xl mx-auto p-8 flex flex-col rounded-lg h-96 justify-center">
-				<div className="rounded-lg w-full justify-center text-center mb-8">
+			<div className="md:max-w-4xl mx-auto p-8 grid md:grid-cols-2 grid-cols-1 rounded-lg justify-center mt-16">
+				<div className="rounded-lg w-full justify-center mb-8 h-60">
 					<h2 className="text-6xl font-bold mb-4">Selected Writes</h2>
 				</div>
-				<div className="flex flex-col h-fit">
-					{writes.map((write, index) => (
-						<a
-							key={index}
-							href={write.link}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="border-b border-gray-300 p-4 rounded-lg flex justify-between items-center">
-							<div>
-								<h3 className="text-2xl font-semibold">{write.title}</h3>
-								<div className="flex gap-2">
-									{write.topics.map((topic, id) => (
-										<div
-											key={id}
-											className="text-gray-600 bg-slate-100 px-2 py-1 rounded text-sm">
-											{topic}
-										</div>
-									))}
-								</div>
+				{writes.map((write, index) => (
+					<a
+						key={index}
+						href={write.link}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="group border-b border-gray-300 p-4 rounded-lg flex justify-center items-center text-center rotate-6 bg-slate-100 hover:scale-110 transition-transform duration-300">
+						<div className="gochi-hand-regular">
+							<h3 className="text-4xl group-hover:underline">{write.title}</h3>
+							<div className="flex gap-2 mx-auto justify-center">
+								{write.topics.map((topic, id) => (
+									<div
+										key={id}
+										className="text-gray-600 bg-slate-100 px-2 py-1 rounded text-sm">
+										{topic}
+									</div>
+								))}
 							</div>
-							<div>
-								<ArrowUpRight className="w-8 h-8" />
-							</div>
-						</a>
-					))}
-				</div>
+						</div>
+						<div>
+							{/* <ArrowUpRight className="w-8 h-8" /> */}
+							{/* <p className="text-6xl">{write.year}</p> */}
+						</div>
+					</a>
+				))}
 			</div>
 
 			{/* Contacs */}

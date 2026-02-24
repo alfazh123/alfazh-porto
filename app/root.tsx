@@ -5,15 +5,10 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
-	useLocation,
 } from "react-router";
-
-import { gsap } from "gsap";
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { useEffect } from "react";
-import Navbar from "./components/navbar";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -45,6 +40,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<style>
 					@import
 					url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+					@import
+					url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
 				</style>
 			</body>
 		</html>
