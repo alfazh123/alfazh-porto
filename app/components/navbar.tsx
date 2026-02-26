@@ -1,13 +1,14 @@
 import { gsap } from "gsap";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 export default function Navbar() {
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	const menu = [
-		{ name: "Home", href: "/" },
-		{ name: "About", href: "/about" },
-		{ name: "Projects", href: "/projects" },
+		{ name: "Home", icon: "navbar/home.svg", href: "/" },
+		{ name: "About", icon: "navbar/about.svg", href: "/about" },
+		{ name: "Projects", icon: "navbar/project.svg", href: "/projects" },
 	];
 
 	function handleLocationChange(location: string) {
@@ -22,20 +23,28 @@ export default function Navbar() {
 	}
 
 	return (
-		<nav className="fixed top-0 right-0 w-fit bg-white z-50 p-4 border-l border-b">
-			<ul className="flex gap-4">
-				{menu.map((item) => (
-					<li key={item.name}>
-						<button
-							type="button"
-							className="relative group text-gray-900 hover:underline px-3"
-							onClick={() => handleLocationChange(item.href)}>
-							{item.name}
-							{/* <div className="absolute -bottom-4 justify-center bg-black h-2 w-full rounded-t-xl hidden group-hover:block group-hover:ease-in-out group-hover:duration-200 group-hover:transition-all" /> */}
-						</button>
-					</li>
-				))}
-			</ul>
-		</nav>
+		<>
+			<nav className="fixed top-0 right-0 w-fit z-50 p-4">
+				<ul className="flex gap-4">
+					{menu.map((item) => (
+						<li key={item.name}>
+							<button
+								type="button"
+								className="relative group text-gray-900 hover:underline px-3"
+								onClick={() => handleLocationChange(item.href)}>
+								<img src={item.icon} alt="dot" />
+								{location.pathname === item.href && (
+									<img
+										src="/navbar/bg.svg"
+										alt="background"
+										className="absolute -bottom-2 left-1 -z-10 shadow-2xl"
+									/>
+								)}
+							</button>
+						</li>
+					))}
+				</ul>
+			</nav>
+		</>
 	);
 }
