@@ -9,6 +9,8 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -33,15 +35,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Links />
 			</head>
 			<body>
-				<div id="body">{children}</div>
+				<div id="body">
+					{children}
+					<Footer />
+				</div>
 				<ScrollRestoration />
 				<Scripts />
-				{/* <Navbar /> */}
+				<Navbar />
 				<style>
 					@import
-					url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
-					@import
-					url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+					url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gochi+Hand&display=swap');
 				</style>
 			</body>
 		</html>
